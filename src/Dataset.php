@@ -19,7 +19,15 @@ class Dataset
      */
     public function __call($method, $parameters): Collection
     {
-        return Collection::make((new static)->getRows());
+        $collection = Collection::make((new static)->getRows());
+
+        if ($this->hasTrait('Kanekescom\Dataset\TimestampsResolver')) {
+            return $collection->map(function ($item) {
+                return $this->timestampsResolver($item);
+            });
+        }
+
+        return $collection;
     }
 
     /**
@@ -74,5 +82,15 @@ class Dataset
     public static function header(): Collection
     {
         return Collection::make((new static)->getHeader());
+    }
+
+    /**
+     * Resolve to timestamps field.
+     */
+    public static function get(): Collection
+    {
+        return self::database()->map(function ($item) {
+            return TimestampResolver::make($item);
+        });
     }
 }
