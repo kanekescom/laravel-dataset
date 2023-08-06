@@ -74,10 +74,7 @@ class Dataset
     }
 
     /**
-     * Handle dynamic method calls into the model.
-     *
-     * @param  string  $method
-     * @param  array  $parameters
+     * Get header.
      */
     public static function header(): Collection
     {
