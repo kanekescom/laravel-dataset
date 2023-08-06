@@ -22,7 +22,7 @@ class Dataset
         $collection = Collection::make((new static)->getRows());
 
         if ($this->hasTrait('Kanekescom\Dataset\TimestampsResolver')) {
-            return $collection->map(function ($item) {
+            $collection = $collection->map(function ($item) {
                 return $this->timestampsResolver($item);
             });
         }
