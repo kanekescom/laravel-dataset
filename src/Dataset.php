@@ -83,14 +83,4 @@ class Dataset
     {
         return Collection::make((new static)->getHeader());
     }
-
-    /**
-     * Resolve to timestamps field.
-     */
-    public static function get(): Collection
-    {
-        return self::database()->map(function ($item) {
-            return TimestampResolver::make($item);
-        });
-    }
 }
