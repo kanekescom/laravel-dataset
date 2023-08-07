@@ -27,7 +27,9 @@ class Dataset
             });
         }
 
-        return $collection;
+        return $collection->map(function ($item) {
+            return $this->transform($item);
+        });
     }
 
     /**
@@ -79,5 +81,15 @@ class Dataset
     public static function header(): Collection
     {
         return Collection::make((new static)->getHeader());
+    }
+
+    /**
+     * To transform rows.
+     *
+     * @param  array  $item
+     */
+    protected function transform(array $item): array
+    {
+        return $item;
     }
 }
