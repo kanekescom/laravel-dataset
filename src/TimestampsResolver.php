@@ -11,16 +11,16 @@ trait TimestampsResolver
      */
     protected function timestampsResolver($array): array
     {
-        if (isset($array['created_at'])) {
-            $array['created_at'] = $array['created_at'] ?: null;
+        if (isset($array[self::CREATED_AT])) {
+            $array[self::CREATED_AT] = $array[self::CREATED_AT] ?: null;
         }
 
-        if (isset($array['updated_at'])) {
-            $array['updated_at'] = $array['updated_at'] ?: null;
+        if (isset($array[self::UPDATED_AT])) {
+            $array[self::UPDATED_AT] = $array[self::UPDATED_AT] ?: null;
         }
 
-        if (isset($array['deleted_at'])) {
-            $array['deleted_at'] = $array['deleted_at'] ?: null;
+        if (isset($array[self::DELETED_AT])) {
+            $array[self::DELETED_AT] = $array[self::DELETED_AT] ?: null;
         }
 
         return $array;
