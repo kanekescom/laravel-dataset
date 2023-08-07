@@ -6,6 +6,10 @@ use Illuminate\Support\Collection;
 
 class Dataset
 {
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+    const DELETED_AT = 'deleted_at';
+
     /**
      * Hardcoded array rows.
      */
